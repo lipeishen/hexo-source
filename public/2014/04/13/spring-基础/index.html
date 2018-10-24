@@ -1,0 +1,529 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <title>Spring 基础 | Leeps</title>
+    <meta name="author" content="李培申">
+    
+    <meta name="description" content="##Spring 基本知识
+
+  从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。简单来说，Spring就是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。
+  下面从整体上认识一下Spring的主要特征：轻量：从大小与开销两方面而言Spring都是轻">
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta property="og:title" content="Spring 基础"/>
+    <meta property="og:site_name" content="Leeps"/>
+
+    <link rel="alternate" href="/atom.xml" title="Leeps" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/normalize.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/furatto.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify_raytaylorism.css" type="text/css">
+        
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/jquery.jpanelmenu.js"></script>
+</head>
+
+
+<body class="container-fluid">
+    <header id="page-header">
+        <div class="navbar inverse-navbar">
+    <div class="navbar-inner">
+        <div class="container-center">
+            <a href="/index.html" class="menu-trigger" data-meteocon="M">
+                <i class="icon-reorder"></i>
+            </a>
+            <div class="nav-collapse navbar-responsive-collapse collapse">
+                <nav id="menu">
+                    <ul class="nav">
+                        <li><a class="brand" id="blog-title" href="/index.html">Leeps</a></li>
+                    </ul>
+                    <div class="pull-right nav" id="nav-button-group">
+                        
+                            <a href="/" class="menu-home btn btn-primary btn-large">
+                                <i class="icon-home icon-white"></i>
+                                首页
+                            </a>
+                        
+                            <a href="/archives" class="menu-archive btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                归档
+                            </a>
+                        
+                            <a href="javascript:void(0);" class="menu-category btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                分类
+                            </a>
+                        
+                            <a href="/reading" class="menu-reading btn btn-primary btn-large">
+                                <i class="icon-book icon-white"></i>
+                                读书
+                            </a>
+                        
+                            <a href="/about" class="menu-about btn btn-primary btn-large">
+                                <i class="icon-user icon-white"></i>
+                                关于
+                            </a>
+                        
+                    </div>
+                </nav>
+                <nav id="jPanelMenu-menu-side">
+    <ul class="nav main-menu">
+        <li><a class="brand" href="index.html">Leeps</a></li>
+        
+            <li>
+                <a href="/" class="menu-home">
+                    <i class="icon-home icon-white"></i>
+                    首页
+                </a>
+            </li>
+        
+            <li>
+                <a href="/archives" class="menu-archive">
+                    <i class="icon-archive icon-white"></i>
+                    归档
+                </a>
+            </li>
+        
+            <li>
+                <a href="javascript:void(0);" class="menu-category">
+                    <i class="icon-archive icon-white"></i>
+                    分类
+                </a>
+            </li>
+        
+            <li>
+                <a href="/reading" class="menu-reading">
+                    <i class="icon-book icon-white"></i>
+                    读书
+                </a>
+            </li>
+        
+            <li>
+                <a href="/about" class="menu-about">
+                    <i class="icon-user icon-white"></i>
+                    关于
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="nav category-menu hide">
+        <li>
+            <span><a class="brand" href="javascript:void(0);">分类目录</a></span>
+            <span><a class="btn-back brand pull-right" href="javascript:void(0);">
+                <i class="icon-arrow-left"></i>
+            </a></span>
+        </li>
+
+        
+
+        
+
+            
+
+            <li collapse-level="0">
+                <a href="/categories/技术/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    技术(5)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/R-Language/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    R-Language(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Android/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Android(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/GitHub/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    GitHub(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Java/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Java(8)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/hexo/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    hexo(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/计算机技术知识/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    计算机技术知识(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Node-js/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Node-js(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Express/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Express(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+        
+    </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </header>
+    <div id="content-wrapper">
+        <div class="container-center">
+        <article class="post">
+    <div class="article-title article-title-big">
+        
+    
+        <h1>Spring 基础</h1>
+    
+
+    </div>
+
+    <div class="date-row ">
+        <time datetime="2014-04-13T15:31:44.000Z">2014-04-13</time>
+    </div>
+
+    <div class="entry">
+        <a id="more"></a>
+<p>##Spring 基本知识</p>
+<p><img src="/img/20.jpg" alt="1"></p>
+<p>  从简单性、可测试性和松耦合的角度而言，任何Java应用都可以从Spring中受益。简单来说，Spring就是一个轻量级的控制反转（IoC）和面向切面（AOP）的容器框架。</p>
+<p>  下面从整体上认识一下Spring的主要特征：<br><em>轻量：从大小与开销两方面而言Spring都是轻量的。此外，Spring是非侵入式的：使用Spring,我们的类还是pojo类，完全不用继承和实现Spring的类和接口等。<br>也就是说，使用Spring的应用中的对象不依赖于Spring的特定类。</em></p>
+<p><em>IoC:Spring通过控制反转技术促进了松耦合。当应用了IoC,一个对象依赖的其它对象会通过被动的方式传递进来，而不是这个对象自己创建或者查找依赖对象。可以认为IoC与JNDI相反–不是我们自己控制对象从容器中查找依赖，而是容器在对象初始化时不等对象请求就主动将依赖传递给它，这就是DI–依赖注入。依赖注入有三种方式：构造函数注入，设值方法注入，借口注入，前两种最常用。<br>基本上就是对象不用自己动手管理和创建。完全由容器管理，我们只管用就行。</em></p>
+<p><em>AOP:Spring提供了面向切面的编程支持，AOP将与程序业务无关的内容分离提取，应用对象只实现它们应该做的–完成业务逻辑–仅此而已。它们并不负责其它的系统级关注点，例如日志或事务支持。AOP只是一种思路而不算是具体的实现技术。Spring的Aop是建立在Java的代理机制之上的<br>AOP将与业务无关的逻辑横切进真正的逻辑中。</em></p>
+<p>###《Spring参考手册》中定义了以下几个AOP的重要概念，结合以上代码分析如下：</p>
+<p> • 切面（Aspect） ：官方的抽象定义为“一个关注点的模块化，这个关注点可能会横切多个对象”，在本例中，“切面”就是类TestAspect所关注的具体行为，例如，AServiceImpl.barA()的调用就是切面TestAspect所关注的行为之一。“切面”在ApplicationContext中<aop:aspect>来配置。</aop:aspect></p>
+<p>•    连接点（Joinpoint） ：程序执行过程中的某一行为，例如，AServiceImpl.barA()的调用或者BServiceImpl.barB(String _msg, int _type)抛出异常等行为。<br>•    通知（Advice） ：“切面”对于某个“连接点”所产生的动作，例如，TestAspect中对com.spring.service包下所有类的方法进行日志记录的动作就是一个Advice。其中，一个“切面”可以包含多个“Advice”，例如TestAspect</p>
+<p>•    切入点（Pointcut） ：匹配连接点的断言，在AOP中通知和一个切入点表达式关联。例如，TestAspect中的所有通知所关注的连接点，都由切入点表达式execution(<em> com.spring.service.</em>.*(..))来决定</p>
+<p>•    目标对象（Target Object） ：被一个或者多个切面所通知的对象。例如，AServcieImpl和BServiceImpl，当然在实际运行时，Spring AOP采用代理实现，实际AOP操作的是TargetObject的代理对象。</p>
+<p>•    AOP代理（AOP Proxy） 在Spring AOP中有两种代理方式，JDK动态代理和CGLIB代理。默认情况下，TargetObject实现了接口时，则采用JDK动态代理，例如，AServiceImpl；反之，采用CGLIB代理，例如，BServiceImpl。强制使用CGLIB代理需要将 <aop:config> 的 proxy-target-class 属性设为true</aop:config></p>
+<h3 id="通知（Advice）类型"><a href="#通知（Advice）类型" class="headerlink" title="通知（Advice）类型"></a>通知（Advice）类型</h3><p>•    前置通知（Before advice） ：在某连接点（JoinPoint）之前执行的通知，但这个通知不能阻止连接点前的执行。ApplicationContext中在<aop:aspect>里面使用<aop:before>元素进行声明。例如，TestAspect中的doBefore方法</aop:before></aop:aspect></p>
+<p>•    后通知（After advice） ：当某连接点退出的时候执行的通知（不论是正常返回还是异常退出）。ApplicationContext中在<aop:aspect>里面使用<aop:after>元素进行声明。例如，TestAspect中的doAfter方法，所以AOPTest中调用BServiceImpl.barB抛出异常时，doAfter方法仍然执行</aop:after></aop:aspect></p>
+<p>•    返回后通知（After return advice） ：在某连接点正常完成后执行的通知，不包括抛出异常的情况。ApplicationContext中在<aop:aspect>里面使用<after-returning>元素进行声明。</after-returning></aop:aspect></p>
+<p>•    环绕通知（Around advice） ：包围一个连接点的通知，类似Web中Servlet规范中的Filter的doFilter方法。可以在方法的调用前后完成自定义的行为，也可以选择不执行。ApplicationContext中在<aop:aspect>里面使用<aop:around>元素进行声明。例如，TestAspect中的doAround方法。</aop:around></aop:aspect></p>
+<p>•    抛出异常后通知（After throwing advice） ： 在方法抛出异常退出时执行的通知。 ApplicationContext中在<aop:aspect>里面使用<aop:after-throwing>元素进行声明。<br>例如，TestAspect中的doThrowing方法。</aop:after-throwing></aop:aspect></p>
+<p>###下面的代码是Spring通知的用法：</p>
+<p>1,前置性通知<br>//SayHello.java</p>
+<pre><code>package sunyang.BeforeAdvice;
+
+public class SayHello {
+public void sayHello() {
+    System.out.println(&quot;Hello......&quot;);
+ }
+}
+</code></pre><p>//Smile.java</p>
+<pre><code> package sunyang.BeforeAdvice;
+
+ import java.lang.reflect.Method;
+
+ import  org.springframework.aop.MethodBeforeAdvice;
+
+public class Smile implements MethodBeforeAdvice {
+
+public void before(Method arg0, Object[] arg1, Object arg2)
+        throws Throwable {
+    System.out.println(&quot;Smile......&quot;);
+ }
+
+}
+</code></pre><p>// TestBeforeAdivce.java</p>
+<pre><code>package sunyang.BeforeAdvice;
+
+import org.springframework.aop.BeforeAdvice;
+import org.springframework.aop.framework.ProxyFactory;
+
+public class TestBeforeAdvice {
+public static void main(String[] args) {
+    SayHello sayHello = new SayHello();
+    BeforeAdvice ba = new Smile();
+    ProxyFactory pf = new ProxyFactory();
+    pf.setTarget(sayHello);
+    pf.addAdvice(ba);
+    SayHello sh = (SayHello) pf.getProxy();
+    sh.sayHello();
+}
+ }
+</code></pre><p>2 环绕型通知只需要更改第三个文件为如下：</p>
+<p>//TestMethodInterceptor.java</p>
+<pre><code>package sunyang.MethodInterceptor;
+
+import org.aopalliance.intercept.MethodInterceptor;
+import org.springframework.aop.framework.ProxyFactory;
+
+public class TestMethodInterceptor {
+public static void main(String[] args) {
+    SayHello sayHello = new SayHello();
+    MethodInterceptor ba = new Smile();
+    ProxyFactory pf = new ProxyFactory();
+    pf.setTarget(sayHello);
+    pf.addAdvice(ba);
+    SayHello sh = (SayHello) pf.getProxy();
+    sh.sayHello();
+  }
+}
+</code></pre><p>*框架：Spring可以将简单的组件配置、组合成为复杂的应用。在Spring中，应用对象被声明式地组合，典型地是在一个XML文件里。Spring也提供了很多基础功能（事务管理、持久化框架集成等等），而用户就有更多的时间和精力去开发应用逻辑</p>
+<p>所有Spring的这些特征都能帮助我们够编写更干净、更可管理、并且更易于测试的代码。它们也为Spring中的各种模块提供了基础支持。</p>
+<p>*借助Spring,荣国依赖注入，AOP应用，面向接口编程，来降低业务组件之间的耦合度，增强系统的扩展性。</p>
+<p>*<br>虽然Spring可以一站式解决整个项目问题，但是Spring并不想取代那些已有的框架，而是与它们无缝地整合。Spring可以降低各种框架的使用难度，他提供了对各种优秀框架（如Struts、Hibernate、Hessian、Quartz等）的直接支持。</p>
+<p>使用Spring的主要目的是使J2EE易用和促进好的编程习惯，Spring的目标就是让已有的技术更加易用。<br>所以Spring的一个重要思想就是整合和兼容。<br>Spring 中所有组件都已Bean的形式存在，要想使用容器管理Bean ,就必须在配置文件中规定好各个bean 的属性和依赖关系。</p>
+
+    </div>
+    
+    <footer >
+        
+            
+    
+    <div class="categories">
+        所属目录：
+    <a href="/categories/Java/">Java</a>
+    </div>
+
+            
+    
+    <div class="tags-row">
+        标签：<a class="btn btn-info" href="/tags/Spring/">Spring</a>
+    </div>
+
+        
+        <div class="clearfix"></div>
+    </footer>
+</article>
+
+
+
+<section class="comment">
+	
+		<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lipeishen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+	
+</section>
+
+
+        </div>
+    </div>
+    <footer id="page-footer"><div class="footer-content">
+    <div class="container-center">
+        <div class="footer-text pull-left">
+            <div class="copyright">
+                
+                Copyright &copy; 2016 <a href="/">李培申</a>
+                
+            </div>
+            <div class="theme-copyright">
+                <span>Blog powered by <a href="http://zespia.tw/hexo/zh-CN/">hexo</a></span>
+                Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a> desgined by <strong>Nix</strong>
+            </div>
+        </div>
+        <div class="social-group pull-right">
+            
+            <a href="https://github.com/lipeishen" target="_blank" title="github"><i class="icon-github"></i></a>
+            
+            
+            <a href="http://weibo.com/2489062212" target="_blank" title="新浪微博"><i class="icon-weibo"></i></a>
+            
+            
+            <a href="http://www.renren.com/275401015" target="_blank" title="人人网"><i class="icon-renren"></i></a>
+            
+            
+            <a href="https://plus.google.com/u/0/" target="_blank" title="Google+"><i class="icon-google-plus-sign"></i></a>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43460643-1', 'raytaylorlin.com');
+    ga('send', 'pageview');
+
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+<script>
+    (function($) {
+        //当内容区内容不够长时，设置内容区域的高度使footer沉底
+        var resizeContentWrapper = function() {
+            //HACK: 用延时的方法使计算高度时候更加准确，会有一闪的情况
+            setTimeout(function() {
+                var contentHeight = Math.floor($('#content-wrapper .container-center').height()),
+                headerHeight = Math.floor($('#page-header').height()),
+                footerHeight = Math.floor($('#page-footer').height()),
+                minHeight = Math.floor($(window).height() - headerHeight - footerHeight);
+                if(contentHeight < minHeight) {
+                    $('#content-wrapper').css({height: minHeight});                    
+                } else {
+                    $('#content-wrapper').css({height: 'auto'});
+                }
+            },500);
+        };
+
+        //响应式侧边栏
+        var initJPanelMenu = function() {
+            var jPM = $.jPanelMenu({
+                menu: '#jPanelMenu-menu-side',
+                duration: 500
+            });
+            jPM.on();
+        };
+
+        //初始化目录按钮事件绑定
+        var initCategory = function() {
+            function showMainMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.category-menu').hide();
+                $jPanelMenu.find('ul.main-menu').fadeIn();
+            }
+
+            function showCategoryMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.main-menu').hide();
+                $jPanelMenu.find('ul.category-menu').fadeIn();
+            }
+
+            $('.menu-category').click(function() {
+                var jPM = $.jPanelMenu({
+                    duration: 500,
+                    beforeOpen: function() {
+                        showCategoryMenu();
+                    },
+                    afterClose: function() {
+                        showMainMenu();
+                    }
+                });
+                if(jPM.isOpen()) {
+                    showCategoryMenu();
+                } else {
+                    jPM.open();
+                }
+            });
+
+            $('.category-menu').on('click', '.btn-back', function() {
+                showMainMenu();
+            });
+        };
+
+        $(document).ready(resizeContentWrapper);
+        $(document).ready(initJPanelMenu);
+        $(document).ready(initCategory);
+        
+        $(window).resize(resizeContentWrapper);
+    })(jQuery);
+</script>
+</body>
+</html>

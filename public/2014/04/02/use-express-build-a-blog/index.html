@@ -1,0 +1,449 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <title>use Express build a blog | Leeps</title>
+    <meta name="author" content="李培申">
+    
+    <meta name="description" content="前言  Npm 提供了大量的第三方模块，其中不乏许多Web框架，我们没有必要重复发明轮子，因而选择使用Express作为开发框架，因为它是目前最稳定、使用最广泛，而且Node.js官方推荐的唯一一个Web开发框架。
+ 12345678910111213141516171819202122232425">
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta property="og:title" content="use Express build a blog"/>
+    <meta property="og:site_name" content="Leeps"/>
+
+    <link rel="alternate" href="/atom.xml" title="Leeps" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/normalize.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/furatto.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify_raytaylorism.css" type="text/css">
+        
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/jquery.jpanelmenu.js"></script>
+</head>
+
+
+<body class="container-fluid">
+    <header id="page-header">
+        <div class="navbar inverse-navbar">
+    <div class="navbar-inner">
+        <div class="container-center">
+            <a href="/index.html" class="menu-trigger" data-meteocon="M">
+                <i class="icon-reorder"></i>
+            </a>
+            <div class="nav-collapse navbar-responsive-collapse collapse">
+                <nav id="menu">
+                    <ul class="nav">
+                        <li><a class="brand" id="blog-title" href="/index.html">Leeps</a></li>
+                    </ul>
+                    <div class="pull-right nav" id="nav-button-group">
+                        
+                            <a href="/" class="menu-home btn btn-primary btn-large">
+                                <i class="icon-home icon-white"></i>
+                                首页
+                            </a>
+                        
+                            <a href="/archives" class="menu-archive btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                归档
+                            </a>
+                        
+                            <a href="javascript:void(0);" class="menu-category btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                分类
+                            </a>
+                        
+                            <a href="/reading" class="menu-reading btn btn-primary btn-large">
+                                <i class="icon-book icon-white"></i>
+                                读书
+                            </a>
+                        
+                            <a href="/about" class="menu-about btn btn-primary btn-large">
+                                <i class="icon-user icon-white"></i>
+                                关于
+                            </a>
+                        
+                    </div>
+                </nav>
+                <nav id="jPanelMenu-menu-side">
+    <ul class="nav main-menu">
+        <li><a class="brand" href="index.html">Leeps</a></li>
+        
+            <li>
+                <a href="/" class="menu-home">
+                    <i class="icon-home icon-white"></i>
+                    首页
+                </a>
+            </li>
+        
+            <li>
+                <a href="/archives" class="menu-archive">
+                    <i class="icon-archive icon-white"></i>
+                    归档
+                </a>
+            </li>
+        
+            <li>
+                <a href="javascript:void(0);" class="menu-category">
+                    <i class="icon-archive icon-white"></i>
+                    分类
+                </a>
+            </li>
+        
+            <li>
+                <a href="/reading" class="menu-reading">
+                    <i class="icon-book icon-white"></i>
+                    读书
+                </a>
+            </li>
+        
+            <li>
+                <a href="/about" class="menu-about">
+                    <i class="icon-user icon-white"></i>
+                    关于
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="nav category-menu hide">
+        <li>
+            <span><a class="brand" href="javascript:void(0);">分类目录</a></span>
+            <span><a class="btn-back brand pull-right" href="javascript:void(0);">
+                <i class="icon-arrow-left"></i>
+            </a></span>
+        </li>
+
+        
+
+        
+
+            
+
+            <li collapse-level="0">
+                <a href="/categories/技术/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    技术(5)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/R-Language/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    R-Language(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Android/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Android(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/GitHub/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    GitHub(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Java/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Java(8)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/hexo/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    hexo(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/计算机技术知识/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    计算机技术知识(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Node-js/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Node-js(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Express/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Express(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+        
+    </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </header>
+    <div id="content-wrapper">
+        <div class="container-center">
+        <article class="post">
+    <div class="article-title article-title-big">
+        
+    
+        <h1>use Express build a blog</h1>
+    
+
+    </div>
+
+    <div class="date-row ">
+        <time datetime="2014-04-02T10:24:21.000Z">2014-04-2</time>
+    </div>
+
+    <div class="entry">
+        <a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  Npm 提供了大量的第三方模块，其中不乏许多Web框架，我们没有必要重复发明轮子，因而选择使用Express作为开发框架，因为它是目前最稳定、使用最广泛，而且Node.js官方推荐的唯一一个Web开发框架。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">##安装Express</span><br><span class="line"> 命令:  npm install  -g  express</span><br><span class="line">-g 说明是在全局模式下安装，这样我们就可以在命令行中使用它。</span><br><span class="line">Express 在初始化一个项目时需要指定模板引擎，默认支持Jade和 Ejs ，为了降低学习难度，我们推荐使用 ejs，但是express 3.X之后就不再默认支持 ejs了，所以安装express时最好装3.0以下的版本。</span><br><span class="line">如果想使用 3.x 的版本</span><br><span class="line">解决方案是</span><br><span class="line">安装一个插件</span><br><span class="line"></span><br><span class="line">    npm install express-partials</span><br><span class="line"></span><br><span class="line">安装完之后会在node_modules 文件夹里面多出一个文件夹 express-partials</span><br><span class="line">app.js代码里面添加这俩行代码即可运行正常</span><br><span class="line"></span><br><span class="line">    partials=require(&apos;express-partials&apos;);</span><br><span class="line">    app.use(partials());</span><br><span class="line"></span><br><span class="line">我们还是再express 3.0 一下开发吧，不用麻烦了。</span><br><span class="line"></span><br><span class="line">通过一下命令建立网站基本结构：</span><br><span class="line">`express  -e  ejs  microblog`</span><br><span class="line">完成之后安装依赖</span><br><span class="line"> `cd microblog  &amp;&amp; npm install`</span><br><span class="line">它自动安装了ejs 和express 。这是因为在package.json 文件中配好了，所有指定依赖的模块都会自动安装。</span><br><span class="line">package.json 文件中的 配置如下：</span><br><span class="line"> ![package.json](./public/img/QQ1.jpg)</span><br><span class="line"> </span><br><span class="line">接下来，运行 node app.js  就看到 服务器启动了，在浏览器中输入地址 http://localhost:3000  就可以看到express的欢迎界面了。</span><br><span class="line">关闭服务器用 Ctrl+ C </span><br><span class="line"></span><br><span class="line">##MongoDB 数据库的安装和配置</span><br><span class="line"></span><br><span class="line">开发过程中使用的数据库是 mongdb ,一种开源的非关系型的数据库，它没有表、行的概念，也咩有固定的模式和结构，数据以文档的形式存储。</span><br><span class="line">安装mongodb 请去 http://www.mongodb.org/ 查看如何安装，也可以按照这篇博客文章去安装 http://blog.csdn.net/yuyunli1989/article/details/16989715</span><br><span class="line"></span><br><span class="line">##连接mangodb数据库</span><br><span class="line">装好之后，在package.json 里面增加一行代码：</span><br><span class="line">` ,”mongodb”: “&gt;=0.9.9”`</span><br><span class="line">然后运行`npm install` 跟新依赖的模块。</span><br><span class="line">接下来的工作是创建settings.js 文件，用于保存数据库的连接信息，数据库名为 microblog ，settings.js的内容如下：</span><br><span class="line">`module.exports = &#123;</span><br><span class="line">  cookieSecret: &apos;microblogbyvoid&apos;,</span><br><span class="line">  db: &apos;microblog&apos;,</span><br><span class="line">  host: &apos;localhost&apos;,</span><br><span class="line">&#125;;`</span><br><span class="line">其中，db 是数据库的名称，host 是数据库的地址。cookieSecret 用于Cookie加密与数据库无关。</span><br><span class="line">接下来在models 子目录中创建db.js 内容是：</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">`var settings = require(&apos;../settings&apos;);</span><br><span class="line">var Db = require(&apos;mongodb&apos;).Db;</span><br><span class="line">var Connection = require(&apos;mongodb&apos;).Connection;</span><br><span class="line">var Server = require(&apos;mongodb&apos;).Server;</span><br><span class="line">module.exports = new Db(settings.db, new Server(settings.host, Connection.DEFAULT_PORT, &#123;&#125;));</span><br><span class="line">`以上代码通过module.exports 输出了创建的数据库连接</span><br><span class="line"></span><br><span class="line">##会话支持</span><br><span class="line">对于开发者来说，我们无须关心浏览器端的存储，需要关注的仅仅是如何通过这个唯一的标示符来识别用户。Express提供了会话中间件，默认情况是把用户信息存储到内存中，我们已经有了mongodb ，不妨把会话信息存储到数据库中，便于持久维护，为了使用这个功能，我们首先获得一个connect-mongo 的模块，在package.json 中添加一行代码：</span><br><span class="line">`，“connect-mongo”:”&gt;=0.1.7”`</span><br><span class="line">运行npm install 获得模块。</span><br><span class="line"></span><br><span class="line"> 打开 app.js 添加以下内容：</span><br><span class="line">`var settings = require(&apos;./settings&apos;);`</span><br><span class="line"></span><br><span class="line">  var MongoStore = require(&apos;connect-mongo&apos;);`</span><br><span class="line"></span><br><span class="line">此处输入 app.configure(function()&#123;</span><br><span class="line">  </span><br><span class="line">app.set(&apos;views&apos;, __dirname + &apos;/views&apos;);</span><br><span class="line">  app.set(&apos;view engine&apos;, &apos;ejs&apos;);</span><br><span class="line">  app.use(express.bodyParser());</span><br><span class="line">  app.use(express.methodOverride());</span><br><span class="line">  app.use(express.cookieParser());</span><br><span class="line">  app.use(express.session(&#123;</span><br><span class="line">    secret: settings.cookieSecret,</span><br><span class="line">    store: new MongoStore(&#123;</span><br><span class="line">      db: settings.db</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;));</span><br><span class="line">  app.use(express.router(routes));</span><br><span class="line">  app.use(express.static(__dirname + &apos;/public&apos;));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">其中express.cookieParser() 是Cookie解析的中间件。Express.session() 提供会话支持，设置它的store 参数为MongoStore 实例，把会话信息存储到数据库中，以免丢失。</span><br></pre></td></tr></table></figure>
+<p>以上就是express框架和mangodb数据库的 常用的配置信息</p>
+
+    </div>
+    
+    <footer >
+        
+            
+    
+    <div class="categories">
+        所属目录：
+    <a href="/categories/Express/">Express</a>
+    </div>
+
+            
+    
+    <div class="tags-row">
+        标签：<a class="btn btn-info" href="/tags/Express/">Express</a>
+    </div>
+
+        
+        <div class="clearfix"></div>
+    </footer>
+</article>
+
+
+
+<section class="comment">
+	
+		<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lipeishen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+	
+</section>
+
+
+        </div>
+    </div>
+    <footer id="page-footer"><div class="footer-content">
+    <div class="container-center">
+        <div class="footer-text pull-left">
+            <div class="copyright">
+                
+                Copyright &copy; 2016 <a href="/">李培申</a>
+                
+            </div>
+            <div class="theme-copyright">
+                <span>Blog powered by <a href="http://zespia.tw/hexo/zh-CN/">hexo</a></span>
+                Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a> desgined by <strong>Nix</strong>
+            </div>
+        </div>
+        <div class="social-group pull-right">
+            
+            <a href="https://github.com/lipeishen" target="_blank" title="github"><i class="icon-github"></i></a>
+            
+            
+            <a href="http://weibo.com/2489062212" target="_blank" title="新浪微博"><i class="icon-weibo"></i></a>
+            
+            
+            <a href="http://www.renren.com/275401015" target="_blank" title="人人网"><i class="icon-renren"></i></a>
+            
+            
+            <a href="https://plus.google.com/u/0/" target="_blank" title="Google+"><i class="icon-google-plus-sign"></i></a>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43460643-1', 'raytaylorlin.com');
+    ga('send', 'pageview');
+
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+<script>
+    (function($) {
+        //当内容区内容不够长时，设置内容区域的高度使footer沉底
+        var resizeContentWrapper = function() {
+            //HACK: 用延时的方法使计算高度时候更加准确，会有一闪的情况
+            setTimeout(function() {
+                var contentHeight = Math.floor($('#content-wrapper .container-center').height()),
+                headerHeight = Math.floor($('#page-header').height()),
+                footerHeight = Math.floor($('#page-footer').height()),
+                minHeight = Math.floor($(window).height() - headerHeight - footerHeight);
+                if(contentHeight < minHeight) {
+                    $('#content-wrapper').css({height: minHeight});                    
+                } else {
+                    $('#content-wrapper').css({height: 'auto'});
+                }
+            },500);
+        };
+
+        //响应式侧边栏
+        var initJPanelMenu = function() {
+            var jPM = $.jPanelMenu({
+                menu: '#jPanelMenu-menu-side',
+                duration: 500
+            });
+            jPM.on();
+        };
+
+        //初始化目录按钮事件绑定
+        var initCategory = function() {
+            function showMainMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.category-menu').hide();
+                $jPanelMenu.find('ul.main-menu').fadeIn();
+            }
+
+            function showCategoryMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.main-menu').hide();
+                $jPanelMenu.find('ul.category-menu').fadeIn();
+            }
+
+            $('.menu-category').click(function() {
+                var jPM = $.jPanelMenu({
+                    duration: 500,
+                    beforeOpen: function() {
+                        showCategoryMenu();
+                    },
+                    afterClose: function() {
+                        showMainMenu();
+                    }
+                });
+                if(jPM.isOpen()) {
+                    showCategoryMenu();
+                } else {
+                    jPM.open();
+                }
+            });
+
+            $('.category-menu').on('click', '.btn-back', function() {
+                showMainMenu();
+            });
+        };
+
+        $(document).ready(resizeContentWrapper);
+        $(document).ready(initJPanelMenu);
+        $(document).ready(initCategory);
+        
+        $(window).resize(resizeContentWrapper);
+    })(jQuery);
+</script>
+</body>
+</html>

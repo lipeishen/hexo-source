@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <title>Java Standard Tag Library | Leeps</title>
+    <meta name="author" content="李培申">
+    
+    <meta name="description" content="###核心标签库1234567891011&amp;lt;c:out&amp;gt;  &amp;lt;c:set&amp;gt; &amp;lt;c:remove&amp;gt; &amp;lt;c:catch&amp;gt;&amp;lt;c:if&amp;gt;    &amp;lt;c:choose&amp;gt;(多条件判断 可以设置&amp;lt;c:when&amp;gt; 和&amp;lt;c:oth">
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta property="og:title" content="Java Standard Tag Library"/>
+    <meta property="og:site_name" content="Leeps"/>
+
+    <link rel="alternate" href="/atom.xml" title="Leeps" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/lib/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/normalize.css" type="text/css">
+    <link rel="stylesheet" href="/css/lib/furatto.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+    
+        <link rel="stylesheet" href="/css/lib/prettify_raytaylorism.css" type="text/css">
+        
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/jquery.jpanelmenu.js"></script>
+</head>
+
+
+<body class="container-fluid">
+    <header id="page-header">
+        <div class="navbar inverse-navbar">
+    <div class="navbar-inner">
+        <div class="container-center">
+            <a href="/index.html" class="menu-trigger" data-meteocon="M">
+                <i class="icon-reorder"></i>
+            </a>
+            <div class="nav-collapse navbar-responsive-collapse collapse">
+                <nav id="menu">
+                    <ul class="nav">
+                        <li><a class="brand" id="blog-title" href="/index.html">Leeps</a></li>
+                    </ul>
+                    <div class="pull-right nav" id="nav-button-group">
+                        
+                            <a href="/" class="menu-home btn btn-primary btn-large">
+                                <i class="icon-home icon-white"></i>
+                                首页
+                            </a>
+                        
+                            <a href="/archives" class="menu-archive btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                归档
+                            </a>
+                        
+                            <a href="javascript:void(0);" class="menu-category btn btn-primary btn-large">
+                                <i class="icon-archive icon-white"></i>
+                                分类
+                            </a>
+                        
+                            <a href="/reading" class="menu-reading btn btn-primary btn-large">
+                                <i class="icon-book icon-white"></i>
+                                读书
+                            </a>
+                        
+                            <a href="/about" class="menu-about btn btn-primary btn-large">
+                                <i class="icon-user icon-white"></i>
+                                关于
+                            </a>
+                        
+                    </div>
+                </nav>
+                <nav id="jPanelMenu-menu-side">
+    <ul class="nav main-menu">
+        <li><a class="brand" href="index.html">Leeps</a></li>
+        
+            <li>
+                <a href="/" class="menu-home">
+                    <i class="icon-home icon-white"></i>
+                    首页
+                </a>
+            </li>
+        
+            <li>
+                <a href="/archives" class="menu-archive">
+                    <i class="icon-archive icon-white"></i>
+                    归档
+                </a>
+            </li>
+        
+            <li>
+                <a href="javascript:void(0);" class="menu-category">
+                    <i class="icon-archive icon-white"></i>
+                    分类
+                </a>
+            </li>
+        
+            <li>
+                <a href="/reading" class="menu-reading">
+                    <i class="icon-book icon-white"></i>
+                    读书
+                </a>
+            </li>
+        
+            <li>
+                <a href="/about" class="menu-about">
+                    <i class="icon-user icon-white"></i>
+                    关于
+                </a>
+            </li>
+        
+    </ul>
+
+    <ul class="nav category-menu hide">
+        <li>
+            <span><a class="brand" href="javascript:void(0);">分类目录</a></span>
+            <span><a class="btn-back brand pull-right" href="javascript:void(0);">
+                <i class="icon-arrow-left"></i>
+            </a></span>
+        </li>
+
+        
+
+        
+
+            
+
+            <li collapse-level="0">
+                <a href="/categories/技术/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    技术(5)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/R-Language/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    R-Language(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Android/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Android(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/GitHub/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    GitHub(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Java/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Java(8)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/hexo/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    hexo(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/计算机技术知识/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    计算机技术知识(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Node-js/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Node-js(2)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+            <li collapse-level="0">
+                <a href="/categories/Express/" class="collapse-level-0">
+                    <i class="icon-caret-right"></i>
+                    Express(1)
+                </a>
+            </li>
+
+            
+
+            
+
+        
+
+        
+    </ul>
+</nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </header>
+    <div id="content-wrapper">
+        <div class="container-center">
+        <article class="post">
+    <div class="article-title article-title-big">
+        
+    
+        <h1>Java Standard Tag Library</h1>
+    
+
+    </div>
+
+    <div class="date-row ">
+        <time datetime="2014-07-11T13:40:24.000Z">2014-07-11</time>
+    </div>
+
+    <div class="entry">
+        <a id="more"></a>
+<p>###核心标签库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:out&gt;  </span><br><span class="line">&lt;c:set&gt; </span><br><span class="line">&lt;c:remove&gt; </span><br><span class="line">&lt;c:catch&gt;</span><br><span class="line">&lt;c:if&gt;    </span><br><span class="line">&lt;c:choose&gt;(多条件判断 可以设置&lt;c:when&gt; 和&lt;c:otherwise&gt;)</span><br><span class="line">&lt;c:forEach&gt; 输出数组、集合</span><br><span class="line">&lt;c:forTokens&gt; 字符串拆分及输出操作</span><br><span class="line">&lt;c:import&gt;  将指定的路径包含到当前页面显示</span><br><span class="line">&lt;c:url&gt;     根据路径和参数生成一个新的URL</span><br><span class="line">&lt;c:redirect&gt;  客户端跳转</span><br></pre></td></tr></table></figure></p>
+<p>###格式化标签库</p>
+<p>####国际化标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;fmt:setLocale&gt;      设置一个全局的地区代码</span><br><span class="line">&lt;fmt:requestEncoding&gt;  设置统一的请求编码</span><br><span class="line"> ``` </span><br><span class="line">####信息显示标签</span><br></pre></td></tr></table></figure></p>
+<p><fmt:bundle> 设置临时的要读取资源文件名称</fmt:bundle></p>
+<p><fmt:message>  通过key 取得value, 通过<fmt:param>向动态文本中设置内容</fmt:param></fmt:message></p>
+<p><fmt:setbundle>  设置一个全局的要读取资源文件名称<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">####数字及日期格式化</span><br></pre></td></tr></table></figure></fmt:setbundle></p>
+<p><fmt:formatnumber>  格式化数字 （变成字符串）</fmt:formatnumber></p>
+<p><fmt:parsenumber>   反格式化数字</fmt:parsenumber></p>
+<p><fmt:formatdate></fmt:formatdate></p>
+<p><fmt:parsedate></fmt:parsedate></p>
+<p><fmt:settimezone> 设置一个全局时区</fmt:settimezone></p>
+<p><fmt:timezone>     设置一个临时时区<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">###SQL标签库</span><br><span class="line"></span><br><span class="line">```&lt;sql:setDataSource&gt;</span><br><span class="line">&lt;sql:query&gt;</span><br><span class="line">&lt;sql:update&gt;</span><br><span class="line">&lt;sql:transaction&gt;</span><br></pre></td></tr></table></figure></fmt:timezone></p>
+<p>###XML 标签库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;x:out&gt;  输出XPath 指定的内容</span><br><span class="line">&lt;x:parse&gt;  进行XML解析</span><br><span class="line">&lt;x:set&gt;   将内容保存在属性范围中</span><br><span class="line">&lt;x:if&gt;</span><br><span class="line">&lt;x:choose&gt;</span><br><span class="line">&lt;x:when&gt;</span><br><span class="line">&lt;x:otherwise&gt;</span><br><span class="line">&lt;x:forEach&gt;</span><br></pre></td></tr></table></figure></p>
+<p>###函数标签库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$&#123;fn:contains()&#125;</span><br><span class="line">$&#123;fn:containsIgnorceCase()&#125;</span><br><span class="line">$&#123;fn:startsWith()&#125;</span><br><span class="line">$&#123;fn:endsWith()&#125;</span><br><span class="line">$&#123;fn:toUpperCase()&#125;</span><br><span class="line">$&#123;fn:toLowerCase()&#125;</span><br><span class="line">$&#123;fn:substring()&#125;</span><br><span class="line">$&#123;fn:split()&#125;</span><br><span class="line">$&#123;fn:join()&#125;</span><br><span class="line">$&#123;fn:escapeXml()&#125;  将 &lt;  &gt;  &quot; &apos;等替换成转义字符</span><br><span class="line">$&#123;fn:trim()&#125;</span><br><span class="line">$&#123;fn:replace()&#125;</span><br><span class="line">$&#123;fn:indexOf()&#125;</span><br><span class="line">$&#123;fn:substringBefore()&#125;</span><br><span class="line">$&#123;fn:substringAfter()&#125;</span><br></pre></td></tr></table></figure></p>
+<p>关于泛型的问题，主要是解决集合中的对象，取出时变为Object， 还需强制转化为原类型，解决办法就是使用泛型&lt;&gt;</p>
+<p><code>list&lt;String&gt; list= ArrayList&lt;String&gt;();</code></p>
+<p>Java 中集合主要分为两类接口 <code>Collection</code> 和<code>Map, Collection</code>又分为<code>Set、Queue、和List</code>三类接口，其中<code>Set</code> 是无序的不能有重复的元素，<code>List</code> 可以。</p>
+<p>泛型中<code>List&lt;Collection&gt;</code> 并不是<code>List&lt;set&gt;</code>的父类，这一点一定要搞明白。一般使用通配符<code>“？”List&lt;?&gt;,</code>它可以是任意<code>List&lt;&gt;</code>的父类，要想限制子类，需要<br><code>List&lt;? extends Collection&gt;</code></p>
+
+    </div>
+    
+    <footer >
+        
+            
+    
+    <div class="categories">
+        所属目录：
+    <a href="/categories/Java/">Java</a>
+    </div>
+
+            
+    
+    <div class="tags-row">
+        标签：<a class="btn btn-info" href="/tags/JSTL/">JSTL</a>
+    </div>
+
+        
+        <div class="clearfix"></div>
+    </footer>
+</article>
+
+
+
+<section class="comment">
+	
+		<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"lipeishen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+	
+</section>
+
+
+        </div>
+    </div>
+    <footer id="page-footer"><div class="footer-content">
+    <div class="container-center">
+        <div class="footer-text pull-left">
+            <div class="copyright">
+                
+                Copyright &copy; 2016 <a href="/">李培申</a>
+                
+            </div>
+            <div class="theme-copyright">
+                <span>Blog powered by <a href="http://zespia.tw/hexo/zh-CN/">hexo</a></span>
+                Theme <a href="https://github.com/raytaylorlin/hexo-theme-raytaylorism">raytaylorism</a> desgined by <strong>Nix</strong>
+            </div>
+        </div>
+        <div class="social-group pull-right">
+            
+            <a href="https://github.com/lipeishen" target="_blank" title="github"><i class="icon-github"></i></a>
+            
+            
+            <a href="http://weibo.com/2489062212" target="_blank" title="新浪微博"><i class="icon-weibo"></i></a>
+            
+            
+            <a href="http://www.renren.com/275401015" target="_blank" title="人人网"><i class="icon-renren"></i></a>
+            
+            
+            <a href="https://plus.google.com/u/0/" target="_blank" title="Google+"><i class="icon-google-plus-sign"></i></a>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+</footer>
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43460643-1', 'raytaylorlin.com');
+    ga('send', 'pageview');
+
+</script>
+
+
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+</script>
+
+<script>
+    (function($) {
+        //当内容区内容不够长时，设置内容区域的高度使footer沉底
+        var resizeContentWrapper = function() {
+            //HACK: 用延时的方法使计算高度时候更加准确，会有一闪的情况
+            setTimeout(function() {
+                var contentHeight = Math.floor($('#content-wrapper .container-center').height()),
+                headerHeight = Math.floor($('#page-header').height()),
+                footerHeight = Math.floor($('#page-footer').height()),
+                minHeight = Math.floor($(window).height() - headerHeight - footerHeight);
+                if(contentHeight < minHeight) {
+                    $('#content-wrapper').css({height: minHeight});                    
+                } else {
+                    $('#content-wrapper').css({height: 'auto'});
+                }
+            },500);
+        };
+
+        //响应式侧边栏
+        var initJPanelMenu = function() {
+            var jPM = $.jPanelMenu({
+                menu: '#jPanelMenu-menu-side',
+                duration: 500
+            });
+            jPM.on();
+        };
+
+        //初始化目录按钮事件绑定
+        var initCategory = function() {
+            function showMainMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.category-menu').hide();
+                $jPanelMenu.find('ul.main-menu').fadeIn();
+            }
+
+            function showCategoryMenu() {
+                var $jPanelMenu = $('#jPanelMenu-menu');
+                $jPanelMenu.find('ul.main-menu').hide();
+                $jPanelMenu.find('ul.category-menu').fadeIn();
+            }
+
+            $('.menu-category').click(function() {
+                var jPM = $.jPanelMenu({
+                    duration: 500,
+                    beforeOpen: function() {
+                        showCategoryMenu();
+                    },
+                    afterClose: function() {
+                        showMainMenu();
+                    }
+                });
+                if(jPM.isOpen()) {
+                    showCategoryMenu();
+                } else {
+                    jPM.open();
+                }
+            });
+
+            $('.category-menu').on('click', '.btn-back', function() {
+                showMainMenu();
+            });
+        };
+
+        $(document).ready(resizeContentWrapper);
+        $(document).ready(initJPanelMenu);
+        $(document).ready(initCategory);
+        
+        $(window).resize(resizeContentWrapper);
+    })(jQuery);
+</script>
+</body>
+</html>
